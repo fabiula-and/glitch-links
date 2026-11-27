@@ -109,6 +109,13 @@ h1 em{font-style:italic;font-weight:400}
 .bc.feat b{font-size:clamp(26px,6vw,32px)}
 @media(min-width:560px){.bc{grid-template-columns:150px minmax(0,1fr)}.bc.feat{grid-template-columns:1fr}}
 
+/* e-mail em destaque — mesmo visual do site principal */
+.mailbox{margin-top:34px;background:var(--lime);border-radius:20px;padding:18px 22px;color:#111;display:flex;align-items:center;justify-content:space-between;gap:12px 16px;flex-wrap:wrap}
+.mailbox span{display:block;font:500 12px var(--b);letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+.mailbox a{font:500 clamp(22px,6vw,28px)/1.1 var(--d);letter-spacing:-.02em;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;word-break:break-all}
+.mailbox a:hover{text-decoration-thickness:2px}
+.mailbox button{flex:none;height:44px;padding:0 18px;border-radius:99px;border:1px solid #111;background:#111;color:#fff;font:500 14px var(--b);cursor:pointer;transition:background .2s,color .2s}
+.mailbox button:hover{background:#fff;color:#111;border-color:#fff}
 /* links rápidos */
 .list{display:grid;gap:8px}
 .ln{display:flex;align-items:center;gap:14px;min-height:60px;padding:10px 12px 10px 18px;border:1px solid var(--line);border-radius:99px;background:var(--panel);transition:background .2s,border-color .2s,color .2s}
@@ -182,6 +189,8 @@ footer p{margin:0;font-size:13px;color:var(--mut)}
     <div class="sh"><h2 id="h-eco">O estúdio</h2><span>três frentes, um time</span></div>
     <div class="brands" id="brands"></div>
   </section>
+
+  <div class="mailbox rv"><div><span>Prefere mandar um e-mail?</span><a href="mailto:fabiula@glitchstudio.ia.br">fabiula@glitchstudio.ia.br</a></div><button type="button" id="cpmail" aria-label="Copiar o e-mail">Copiar</button></div>
 
   <section class="sec" aria-labelledby="h-links">
     <div class="sh"><h2 id="h-links">Atalhos</h2><span>vá direto ao ponto</span></div>
@@ -291,6 +300,12 @@ $("#share").addEventListener("click", () => {
   const url = location.href.split("#")[0];
   try { navigator.clipboard.writeText(url).then(() => say("Link copiado ✓"), () => say(url)); }
   catch(e){ say(url); }
+});
+
+$("#cpmail").addEventListener("click", () => {
+  const m = "fabiula@glitchstudio.ia.br";
+  try { navigator.clipboard.writeText(m).then(() => say("E-mail copiado ✓"), () => say(m)); }
+  catch(e){ say(m); }
 });
 
 /* entrada suave */
